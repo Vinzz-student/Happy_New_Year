@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="icon.webp">
+
+</head>
+<body>
+    <!-- Latar Belakang -->
+    <div class="background-stars"></div>
+    
+    <!-- Kontainer Utama -->
+    <div class="container">
+        <!-- Header dengan Salam -->
+        <header class="header">
+            <h1 class="title">Happy New Year, <span class="love-name" id="name-placeholder">Aninnn</span>!</h1>
+            <div class="countdown-container">
+                <h2>Hitungan Mundur Menuju 2026</h2>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <span id="days">00</span>
+                        <div class="countdown-label">Hari</div>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours">00</span>
+                        <div class="countdown-label">Jam</div>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes">00</span>
+                        <div class="countdown-label">Menit</div>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds">00</span>
+                        <div class="countdown-label">Detik</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+            <!-- Bagian Fitur Petasan -->
+            <section class="fireworks-section">
+                <h2><i class="fas fa-fire"></i> Petasan Buat Kamuu</h2>
+                <p class="section-description">Klik di area bawah ini atau tombol nyalakan petasan</p>
+                
+                <!-- Area Kembang Api Interaktif -->
+                <div class="fireworks-area" id="fireworksArea">
+                    <canvas id="fireworksCanvas"></canvas>
+                </div>
+                <button onclick="launchFirework()">Nyalakan Petasan 🎆</button>
+            </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-message">
+                    <h3>Terima kasih telah menjadi bagian dari tahun 2025-ku</h3>
+                    <p>Semoga 2026 membawa lebih banyak kebahagiaan untuk kita!</p>
+                </div>
+
+    <!-- Audio untuk efek suara -->
+    <audio id="fireworkSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-fireworks-show-audio-3087.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-a-romantic-date-643.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

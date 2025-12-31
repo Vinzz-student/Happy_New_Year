@@ -4,22 +4,40 @@ let biggestExplosion = 0;
 
 /* ================= COUNTDOWN (AMAN) ================= */
 function initCountdown() {
-  function updateCountdown() {
-    const now = new Date();
-    const newYear = new Date(now.getFullYear() + 1, 0, 1);
-    const diff = newYear - now;
+  let targetYear = new Date().getFullYear() + 1;
 
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((diff / (1000 * 60)) % 60);
-    const s = Math.floor((diff / 1000) % 60);
-
-    document.getElementById("days").textContent = d.toString().padStart(2, "0");
-    document.getElementById("hours").textContent = h.toString().padStart(2, "0");
-    document.getElementById("minutes").textContent = m.toString().padStart(2, "0");
-    document.getElementById("seconds").textContent = s.toString().padStart(2, "0");
+  function updateTitle() {
+    const title = document.querySelector(".countdown-container h2");
+    if (title) {
+      title.textContent = `Hitungan Mundur Menuju ${targetYear}`;
+    }
   }
 
+  function updateCountdown() {
+    const now = new Date();
+    let targetDate = new Date(targetYear, 0, 1, 0, 0, 0);
+    let diff = targetDate - now;
+
+    // kalau sudah lewat tahun baru → pindah ke tahun berikutnya
+    if (diff <= 0) {
+      targetYear++;
+      updateTitle();
+      targetDate = new Date(targetYear, 0, 1, 0, 0, 0);
+      diff = targetDate - now;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("days").textContent = days.toString().padStart(2, "0");
+    document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+    document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+    document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+  }
+
+  updateTitle();
   updateCountdown();
   setInterval(updateCountdown, 1000);
 }
@@ -133,3 +151,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (bgm.paused) bgm.play().catch(() => {});
   }, { once: true });
 });
+
